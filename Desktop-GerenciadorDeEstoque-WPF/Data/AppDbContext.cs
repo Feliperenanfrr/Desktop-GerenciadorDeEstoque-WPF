@@ -41,24 +41,11 @@ public class AppDbContext : DbContext
 
             entity.Property(p => p.Nome).IsRequired().HasMaxLength(200);
             entity.Property(p => p.ValorVenda).HasColumnType("decimal(10,2)");
+            
+            entity.Property(p => p.DataCadastro).HasColumnType("datetime");
+            entity.Property(p => p.DataCadastro).ValueGeneratedOnAdd();
         });
         
         
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

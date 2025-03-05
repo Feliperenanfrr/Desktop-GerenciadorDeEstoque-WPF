@@ -7,5 +7,5 @@ public class Produto
     public int Quantidade { get; set; }
     public decimal ValorDeCusto { get; set; }
     public decimal ValorVenda { get; set; }
-    public DateTime DataCadastro { get; set; }
+    public DateTime DataCadastro { get; set; } =  DateTime.Now;
 }
