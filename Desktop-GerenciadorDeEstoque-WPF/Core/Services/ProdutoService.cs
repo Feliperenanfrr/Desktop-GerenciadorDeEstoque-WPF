@@ -2,7 +2,7 @@
 
 namespace Desktop_GerenciadorDeEstoque_WPF.Core.Services;
 
-public class EstoqueService
+public class ProdutoService
 {
     public bool VerificarEstoque(Produto produto, int quantidade)
     {
