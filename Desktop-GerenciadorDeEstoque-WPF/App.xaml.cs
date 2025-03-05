@@ -4,7 +4,9 @@ using System.Windows;
 using CadastroProdutosWPF;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Services;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Services.Interfaces;
+using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels;
 using Desktop_GerenciadorDeEstoque_WPF.Data;
+using Desktop_GerenciadorDeEstoque_WPF.Views;
 using Microsoft.Extensions.DependencyInjection;
 
 
@@ -24,8 +26,8 @@ public partial class App : Application
         
         var serviceProvider = serviceCollection.BuildServiceProvider();
 
-        var mainWindow = serviceProvider.GetRequiredService<MainWindow>();
-        mainWindow.Show();
+        var produtoView = serviceProvider.GetRequiredService<ProdutoView>();
+        produtoView.Show();
     }
 
     private void ConfigureServices(IServiceCollection services)
@@ -35,5 +37,9 @@ public partial class App : Application
         services.AddScoped<IProdutoService, ProdutoService>();
 
         services.AddTransient<MainWindow>();
+
+        services.AddTransient<ProdutoViewModel>();
+
+        services.AddTransient<ProdutoView>();
     }
 }

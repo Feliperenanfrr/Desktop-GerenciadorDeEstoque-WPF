@@ -25,11 +25,15 @@ public partial class ProdutoViewModel : ObservableObject
         CriarProdutoCommand = new RelayCommand(CriarProduto);
         EditarProdutoCommand = new RelayCommand(EditarProduto, () => _produtoSelecionado != null);
         ExcluirProdutoCommand = new RelayCommand(ExcluirProduto, () => _produtoSelecionado != null);
+        ListarProdutosCommand = new RelayCommand(ListarProdutos);
+
     }
 
     public IRelayCommand CriarProdutoCommand { get; }
     public IRelayCommand EditarProdutoCommand { get; }
     public IRelayCommand ExcluirProdutoCommand { get; }
+    public IRelayCommand ListarProdutosCommand { get; }
+
 
     private void CriarProduto()
     {
@@ -61,4 +65,10 @@ public partial class ProdutoViewModel : ObservableObject
             _produtos.Remove(_produtoSelecionado);
         }
     }
+
+    private void ListarProdutos()
+    {
+        Produtos = new ObservableCollection<Produto>(_produtoService.ListarProdutos());
+    }
+
 }
