@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+Desktop-GerenciadorDeEstoque-WPF/appsettings.json
