@@ -2,7 +2,6 @@
 using Desktop_GerenciadorDeEstoque_WPF.Core.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace Desktop_GerenciadorDeEstoque_WPF.Data;
 
@@ -14,10 +13,10 @@ public class AppDbContext : DbContext
     {
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json")
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .Build();
 
-        _connectionString = configuration.GetConnectionString("DefaultConnection") 
+        _connectionString = configuration.GetConnectionString("DefaultConnection")
                             ?? throw new InvalidOperationException("A string de conexão não foi encontrada.");
     }
 
@@ -25,7 +24,7 @@ public class AppDbContext : DbContext
     {
         optionsBuilder.UseNpgsql(_connectionString);
     }
-    
+
     public DbSet<Produto> Produtos { get; set; }
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<TransacaoFinanceira> TransacoesFinanceiras { get; set; }
@@ -36,16 +35,16 @@ public class AppDbContext : DbContext
     {
         modelBuilder.Entity<Produto>(entity =>
         {
+            entity.ToTable("Produtos"); // 🛠 Garante que o nome da tabela seja Produtos
+
             entity.HasKey(p => p.Id);
             entity.Property(p => p.Id).ValueGeneratedOnAdd();
 
             entity.Property(p => p.Nome).IsRequired().HasMaxLength(200);
             entity.Property(p => p.ValorVenda).HasColumnType("decimal(10,2)");
-            
-            entity.Property(p => p.DataCadastro).HasColumnType("datetime");
+
+            entity.Property(p => p.DataCadastro).HasColumnType("timestamp");
             entity.Property(p => p.DataCadastro).ValueGeneratedOnAdd();
         });
-        
-        
     }
 }
