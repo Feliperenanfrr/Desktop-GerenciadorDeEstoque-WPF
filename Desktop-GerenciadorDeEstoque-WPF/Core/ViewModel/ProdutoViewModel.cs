@@ -100,4 +100,26 @@ public partial class ProdutoViewModel : ObservableObject
     {
         Produtos = new ObservableCollection<Produto>(_produtoService.ListarProdutos());
     }
+
+    partial void OnProdutoSelecionadoChanged(Produto value)
+    {
+        EditarProdutoCommand.NotifyCanExecuteChanged();
+        ExcluirProdutoCommand.NotifyCanExecuteChanged();
+
+        if (value != null)
+        {
+            Nome = value.Nome;
+            Quantidade = value.Quantidade;
+            ValorDeCusto = value.ValorDeCusto;
+            ValorVenda = value.ValorVenda;
+        }
+        else
+        {
+            // Limpar campos se nenhum produto estiver selecionado
+            Nome = string.Empty;
+            Quantidade = 0;
+            ValorDeCusto = 0;
+            ValorVenda = 0;
+        }
+    }
 }
