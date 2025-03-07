@@ -23,6 +23,8 @@ public class FinanceiroService : IFinanceiroService
         if (transacao == null)
             throw new ArgumentNullException(nameof(transacao));
 
+        transacao.Data = DateTime.SpecifyKind(transacao.Data, DateTimeKind.Utc);
+
         _context.TransacoesFinanceiras.Add(transacao);
         _context.SaveChanges();
     }
@@ -38,7 +40,7 @@ public class FinanceiroService : IFinanceiroService
 
         transacaoExistente.Descricao = transacao.Descricao;
         transacaoExistente.Tipo = transacao.Tipo;
-        transacaoExistente.Data = transacao.Data;
+        transacaoExistente.Data = DateTime.SpecifyKind(transacao.Data, DateTimeKind.Utc);
         transacaoExistente.Valor = transacao.Valor;
 
         _context.SaveChanges();
@@ -65,6 +67,9 @@ public class FinanceiroService : IFinanceiroService
 
     public List<TransacaoFinanceira> FiltrarTransacoesPorData(DateTime inicio, DateTime fim)
     {
+        inicio = DateTime.SpecifyKind(inicio, DateTimeKind.Utc);
+        fim = DateTime.SpecifyKind(fim, DateTimeKind.Utc);
+
         return _context.TransacoesFinanceiras
             .Where(t => t.Data >= inicio && t.Data <= fim)
             .ToList();
