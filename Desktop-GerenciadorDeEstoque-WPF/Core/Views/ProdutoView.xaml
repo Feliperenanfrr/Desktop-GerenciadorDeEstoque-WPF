@@ -1,44 +1,73 @@
 ﻿<Window x:Class="Desktop_GerenciadorDeEstoque_WPF.Views.ProdutoView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        Title="Gerenciamento de Produtos" Height="400" Width="600">
+        Title="Gerenciamento de Produtos" Height="500" Width="700"
+        Background="#f0f0f0" WindowStartupLocation="CenterScreen">
 
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Nome:" Grid.Row="0" />
-        <TextBox Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged}" 
-                 Grid.Row="0" Margin="93,0,0,5"/>
+        <!-- Painel de Detalhes do Produto -->
+        <Border Grid.Column="0" Background="White" CornerRadius="10" Margin="0,0,10,0" Padding="15">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.3"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Detalhes do Produto" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Nome:" Margin="0,5"/>
+                    <TextBox Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged}" 
+                             Margin="0,5" Padding="5" BorderBrush="#ccc"/>
+                </StackPanel>
+                
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Quantidade:" Margin="0,5"/>
+                    <TextBox Text="{Binding Quantidade, UpdateSourceTrigger=PropertyChanged}" 
+                             Margin="0,5" Padding="5" BorderBrush="#ccc"/>
+                </StackPanel>
+                
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Valor de Custo:" Margin="0,5"/>
+                    <TextBox Text="{Binding ValorDeCusto, UpdateSourceTrigger=PropertyChanged}" 
+                             Margin="0,5" Padding="5" BorderBrush="#ccc"/>
+                </StackPanel>
+                
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Valor de Venda:" Margin="0,5"/>
+                    <TextBox Text="{Binding ValorVenda, UpdateSourceTrigger=PropertyChanged}" 
+                             Margin="0,5" Padding="5" BorderBrush="#ccc"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <Button Content="Criar" Command="{Binding CriarProdutoCommand}" 
+                            Width="100" Margin="5" Background="#4CAF50" Foreground="White" 
+                            BorderThickness="0" Padding="5"/>
+                    <Button Content="Editar" Command="{Binding EditarProdutoCommand}" 
+                            Width="100" Margin="5" Background="#FFC107" Foreground="White" 
+                            BorderThickness="0" Padding="5"/>
+                    <Button Content="Excluir" Command="{Binding ExcluirProdutoCommand}" 
+                            Width="100" Margin="5" Background="#F44336" Foreground="White" 
+                            BorderThickness="0" Padding="5"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
 
-        <TextBlock Text="Quantidade:" Grid.Row="1" />
-        <TextBox Text="{Binding Quantidade, UpdateSourceTrigger=PropertyChanged}" 
-                 Grid.Row="1" Margin="93,0,0,5"/>
-
-        <TextBlock Text="Valor de Custo:" Grid.Row="2" />
-        <TextBox Text="{Binding ValorDeCusto, UpdateSourceTrigger=PropertyChanged}" 
-                 Grid.Row="2" Margin="93,0,0,5"/>
-
-        <TextBlock Text="Valor de Venda:" Grid.Row="3" />
-        <TextBox Text="{Binding ValorVenda, UpdateSourceTrigger=PropertyChanged}" 
-                 Grid.Row="3" Margin="93,0,0,5"/>
-        
-        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,10,0,10">
-            <Button Content="Criar Produto" Command="{Binding CriarProdutoCommand}" Width="120" Margin="5"/>
-            <Button Content="Editar Produto" Command="{Binding EditarProdutoCommand}" Width="120" Margin="5"/>
-            <Button Content="Excluir Produto" Command="{Binding ExcluirProdutoCommand}" Width="120" Margin="5"/>
-        </StackPanel>
-
-        <ListBox ItemsSource="{Binding Produtos}" Grid.Row="5" DisplayMemberPath="Nome"
-                 SelectedItem="{Binding ProdutoSelecionado}" />
+        <!-- Lista de Produtos -->
+        <Border Grid.Column="1" Background="White" CornerRadius="10" Padding="15">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.3"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Lista de Produtos" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <ListBox ItemsSource="{Binding Produtos}" 
+                         SelectedItem="{Binding ProdutoSelecionado}" 
+                         DisplayMemberPath="Nome"
+                         BorderBrush="#ccc" Padding="5"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
