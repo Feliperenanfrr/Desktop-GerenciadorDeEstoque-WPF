@@ -8,15 +8,15 @@ using System.Windows;
 
 namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels;
 
-public partial class TransacoesViewModel : ObservableObject
+public partial class FinanceiroViewModel : ObservableObject
 {
     private readonly IFinanceiroService _financeiroService;
 
     [ObservableProperty]
-    private ObservableCollection<TransacaoFinanceira> _transacoes;
+    private ObservableCollection<Financeiro> _transacoes;
 
     [ObservableProperty]
-    private TransacaoFinanceira _transacaoSelecionada;
+    private Financeiro _transacaoSelecionada;
 
     [ObservableProperty]
     private string _descricao;
@@ -37,11 +37,11 @@ public partial class TransacoesViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<string> _tiposTransacao = new ObservableCollection<string> { "Entrada", "Saída" };
 
-    public TransacoesViewModel(IFinanceiroService financeiroService)
+    public FinanceiroViewModel(IFinanceiroService financeiroService)
     {
         _financeiroService = financeiroService;
 
-        _transacoes = new ObservableCollection<TransacaoFinanceira>(_financeiroService.ListarTransacoes());
+        _transacoes = new ObservableCollection<Financeiro>(_financeiroService.ListarTransacoes());
         _saldoAtual = _financeiroService.CalcularSaldoAtual();
 
         CriarTransacaoCommand = new RelayCommand(CriarTransacao);
@@ -65,7 +65,7 @@ public partial class TransacoesViewModel : ObservableObject
             return;
         }
 
-        var novaTransacao = new TransacaoFinanceira
+        var novaTransacao = new Financeiro
         {
             Descricao = Descricao,
             Tipo = Tipo.Value, // Utilizando Tipo como bool
@@ -112,7 +112,7 @@ public partial class TransacoesViewModel : ObservableObject
 
     private void ListarTransacoes()
     {
-        Transacoes = new ObservableCollection<TransacaoFinanceira>(_financeiroService.ListarTransacoes());
+        Transacoes = new ObservableCollection<Financeiro>(_financeiroService.ListarTransacoes());
         AtualizarSaldo();
     }
 
@@ -120,7 +120,7 @@ public partial class TransacoesViewModel : ObservableObject
     {
         var inicio = DateTime.Now.AddMonths(-1); // Exemplo: últimos 30 dias
         var fim = DateTime.Now;
-        Transacoes = new ObservableCollection<TransacaoFinanceira>(_financeiroService.FiltrarTransacoesPorData(inicio, fim));
+        Transacoes = new ObservableCollection<Financeiro>(_financeiroService.FiltrarTransacoesPorData(inicio, fim));
     }
 
     private void AtualizarSaldo()
@@ -128,7 +128,7 @@ public partial class TransacoesViewModel : ObservableObject
         SaldoAtual = _financeiroService.CalcularSaldoAtual();
     }
 
-    partial void OnTransacaoSelecionadaChanged(TransacaoFinanceira value)
+    partial void OnTransacaoSelecionadaChanged(Financeiro value)
     {
         EditarTransacaoCommand.NotifyCanExecuteChanged();
         ExcluirTransacaoCommand.NotifyCanExecuteChanged();

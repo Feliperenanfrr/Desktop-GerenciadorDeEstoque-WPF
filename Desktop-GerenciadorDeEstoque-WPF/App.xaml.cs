@@ -36,7 +36,7 @@ public partial class App : Application
 
         // Registrando os ViewModels
         services.AddTransient<ProdutoViewModel>();
-        services.AddTransient<TransacoesViewModel>(); // Adicionei o ViewModel
+        services.AddTransient<FinanceiroViewModel>(); // Adicionei o ViewModel
 
         // Registrando as Views
         services.AddTransient<ProdutoView>();

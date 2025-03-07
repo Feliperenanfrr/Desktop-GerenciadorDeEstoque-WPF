@@ -22,6 +22,32 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Desktop_GerenciadorDeEstoque_WPF.Core.Model.Financeiro", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("Tipo")
+                        .HasColumnType("boolean");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TransacoesFinanceiras");
+                });
+
             modelBuilder.Entity("Desktop_GerenciadorDeEstoque_WPF.Core.Model.Material", b =>
                 {
                     b.Property<int>("Id")
@@ -77,32 +103,6 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Produtos", (string)null);
-                });
-
-            modelBuilder.Entity("Desktop_GerenciadorDeEstoque_WPF.Core.Model.TransacaoFinanceira", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<bool>("Tipo")
-                        .HasColumnType("boolean");
-
-                    b.Property<decimal>("Valor")
-                        .HasColumnType("numeric");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TransacoesFinanceiras");
                 });
 
             modelBuilder.Entity("Desktop_GerenciadorDeEstoque_WPF.Core.Model.Usuario", b =>

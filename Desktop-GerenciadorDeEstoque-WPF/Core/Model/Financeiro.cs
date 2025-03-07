@@ -1,6 +1,6 @@
 ﻿namespace Desktop_GerenciadorDeEstoque_WPF.Core.Model;
 
-public class TransacaoFinanceira
+public class Financeiro
 {
     public int Id { get; set; }
     public string Descricao { get; set; }

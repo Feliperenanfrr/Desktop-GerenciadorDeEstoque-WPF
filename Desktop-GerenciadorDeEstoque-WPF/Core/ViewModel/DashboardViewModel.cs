@@ -9,16 +9,16 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel;
 public class DashboardViewModel : INotifyPropertyChanged
 {
     static AppDbContext  _context;
-    private ObservableCollection<TransacaoFinanceira> _transacoes = new ();
+    private ObservableCollection<Financeiro> _transacoes = new ();
     private FinanceiroService _financeiroService = new FinanceiroService(_context);
 
-    public ObservableCollection<TransacaoFinanceira> Transacoes
+    public ObservableCollection<Financeiro> Transacoes
     {
         get { return _transacoes; }
         set { _transacoes = value; OnPropertyChanged(nameof(Transacoes)); }
     }
     
-    public void AdicionarTransacao(TransacaoFinanceira transacao)
+    public void AdicionarTransacao(Financeiro transacao)
     {
         _financeiroService.CriarTransacao(transacao);
         Transacoes.Add(transacao);

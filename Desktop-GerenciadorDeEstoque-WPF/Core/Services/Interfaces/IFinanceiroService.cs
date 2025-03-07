@@ -4,11 +4,11 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.Services.Interfaces;
 
 public interface IFinanceiroService
 {
-    List<TransacaoFinanceira> ListarTransacoes();
-    void CriarTransacao(TransacaoFinanceira transacao);
-    void AtualizarTransacao(TransacaoFinanceira transacao);
+    List<Financeiro> ListarTransacoes();
+    void CriarTransacao(Financeiro transacao);
+    void AtualizarTransacao(Financeiro transacao);
     void ExcluirTransacao(int id);
-    TransacaoFinanceira BuscarTransacaoPorId(int id);
-    List<TransacaoFinanceira> FiltrarTransacoesPorData(DateTime dataInicial, DateTime dataFinal);
+    Financeiro BuscarTransacaoPorId(int id);
+    List<Financeiro> FiltrarTransacoesPorData(DateTime dataInicial, DateTime dataFinal);
     decimal CalcularSaldoAtual();
 }

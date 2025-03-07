@@ -27,7 +27,7 @@ public class AppDbContext : DbContext
 
     public DbSet<Produto> Produtos { get; set; }
     public DbSet<Usuario> Usuarios { get; set; }
-    public DbSet<TransacaoFinanceira> TransacoesFinanceiras { get; set; }
+    public DbSet<Financeiro> TransacoesFinanceiras { get; set; }
     public DbSet<Material> Materiais { get; set; }
     public DbSet<Venda> Vendas { get; set; }
 
@@ -47,7 +47,7 @@ public class AppDbContext : DbContext
             entity.Property(p => p.DataCadastro).ValueGeneratedOnAdd();
         });
         
-        modelBuilder.Entity<TransacaoFinanceira>(entity =>
+        modelBuilder.Entity<Financeiro>(entity =>
         {
             entity.Property(t => t.Tipo).HasColumnType("boolean");
         });

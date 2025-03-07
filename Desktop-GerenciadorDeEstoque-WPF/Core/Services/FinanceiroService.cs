@@ -13,12 +13,12 @@ public class FinanceiroService : IFinanceiroService
         _context = context;
     }
 
-    public List<TransacaoFinanceira> ListarTransacoes()
+    public List<Financeiro> ListarTransacoes()
     {
         return _context.TransacoesFinanceiras.ToList();
     }
 
-    public void CriarTransacao(TransacaoFinanceira transacao)
+    public void CriarTransacao(Financeiro transacao)
     {
         if (transacao == null)
             throw new ArgumentNullException(nameof(transacao));
@@ -29,7 +29,7 @@ public class FinanceiroService : IFinanceiroService
         _context.SaveChanges();
     }
 
-    public void AtualizarTransacao(TransacaoFinanceira transacao)
+    public void AtualizarTransacao(Financeiro transacao)
     {
         if (transacao == null)
             throw new ArgumentNullException(nameof(transacao));
@@ -56,7 +56,7 @@ public class FinanceiroService : IFinanceiroService
         _context.SaveChanges();
     }
 
-    public TransacaoFinanceira BuscarTransacaoPorId(int id)
+    public Financeiro BuscarTransacaoPorId(int id)
     {
         var transacaoExistente = _context.TransacoesFinanceiras.Find(id);
         if (transacaoExistente == null)
@@ -65,7 +65,7 @@ public class FinanceiroService : IFinanceiroService
         return transacaoExistente;
     }
 
-    public List<TransacaoFinanceira> FiltrarTransacoesPorData(DateTime inicio, DateTime fim)
+    public List<Financeiro> FiltrarTransacoesPorData(DateTime inicio, DateTime fim)
     {
         inicio = DateTime.SpecifyKind(inicio, DateTimeKind.Utc);
         fim = DateTime.SpecifyKind(fim, DateTimeKind.Utc);
