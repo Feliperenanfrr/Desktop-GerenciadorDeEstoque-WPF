@@ -2,13 +2,15 @@
 using System.ComponentModel;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Model;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Services;
+using Desktop_GerenciadorDeEstoque_WPF.Data;
 
 namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel;
 
 public class DashboardViewModel : INotifyPropertyChanged
 {
+    static AppDbContext  _context;
     private ObservableCollection<TransacaoFinanceira> _transacoes = new ();
-    private FinanceiroService _financeiroService = new FinanceiroService();
+    private FinanceiroService _financeiroService = new FinanceiroService(_context);
 
     public ObservableCollection<TransacaoFinanceira> Transacoes
     {
@@ -18,7 +20,7 @@ public class DashboardViewModel : INotifyPropertyChanged
     
     public void AdicionarTransacao(TransacaoFinanceira transacao)
     {
-        _financeiroService.AdicionarTransacao(transacao);
+        _financeiroService.CriarTransacao(transacao);
         Transacoes.Add(transacao);
     }
 
