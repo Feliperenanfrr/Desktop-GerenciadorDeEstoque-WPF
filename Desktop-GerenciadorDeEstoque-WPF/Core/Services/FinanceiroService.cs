@@ -73,11 +73,11 @@ public class FinanceiroService : IFinanceiroService
     public decimal CalcularSaldoAtual()
     {
         var entradas = _context.TransacoesFinanceiras
-            .Where(t => t.Tipo == "Entrada")
+            .Where(t => t.Tipo == false) // false para "Entrada"
             .Sum(t => t.Valor);
 
         var saidas = _context.TransacoesFinanceiras
-            .Where(t => t.Tipo == "Saída")
+            .Where(t => t.Tipo == true) // true para "Saída"
             .Sum(t => t.Valor);
 
         return entradas - saidas;

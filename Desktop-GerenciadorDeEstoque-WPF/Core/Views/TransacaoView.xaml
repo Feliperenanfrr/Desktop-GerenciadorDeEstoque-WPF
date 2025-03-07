@@ -26,9 +26,10 @@
 
                 <StackPanel Margin="0,0,0,10">
                     <TextBlock Text="Tipo:" Margin="0,5"/>
-                    <ComboBox ItemsSource="{Binding TiposTransacao}" 
-                              SelectedItem="{Binding TipoSelecionado, Mode=TwoWay}" 
+                    <ComboBox ItemsSource="{Binding TiposTransacao}"
+                              SelectedIndex="{Binding Tipo, Mode=TwoWay}"
                               Margin="0,5" Padding="5" BorderBrush="#ccc"/>
+
 
                 </StackPanel>
 

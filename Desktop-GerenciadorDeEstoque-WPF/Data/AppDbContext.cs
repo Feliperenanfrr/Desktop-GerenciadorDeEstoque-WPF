@@ -46,5 +46,10 @@ public class AppDbContext : DbContext
             entity.Property(p => p.DataCadastro).HasColumnType("timestamp");
             entity.Property(p => p.DataCadastro).ValueGeneratedOnAdd();
         });
+        
+        modelBuilder.Entity<TransacaoFinanceira>(entity =>
+        {
+            entity.Property(t => t.Tipo).HasColumnType("boolean");
+        });
     }
 }

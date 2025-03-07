@@ -22,7 +22,7 @@ public partial class TransacoesViewModel : ObservableObject
     private string _descricao;
 
     [ObservableProperty]
-    private string _tipo; // "Entrada" ou "Saída"
+    private bool? _tipo; // false = Entrada, true = Saída
 
     [ObservableProperty]
     private DateTime _data = DateTime.Now;
@@ -59,7 +59,7 @@ public partial class TransacoesViewModel : ObservableObject
 
     private void CriarTransacao()
     {
-        if (string.IsNullOrWhiteSpace(Descricao) || string.IsNullOrWhiteSpace(Tipo) || Valor <= 0)
+        if (string.IsNullOrWhiteSpace(Descricao) || Tipo == null || Valor <= 0)
         {
             MessageBox.Show("Preencha todos os campos corretamente!", "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
@@ -68,7 +68,7 @@ public partial class TransacoesViewModel : ObservableObject
         var novaTransacao = new TransacaoFinanceira
         {
             Descricao = Descricao,
-            Tipo = Tipo,
+            Tipo = Tipo.Value, // Utilizando Tipo como bool
             Data = Data,
             Valor = Valor
         };
@@ -79,7 +79,7 @@ public partial class TransacoesViewModel : ObservableObject
 
         // Limpar os campos após criar
         Descricao = string.Empty;
-        Tipo = null; // Corrigido para que o ComboBox volte a ficar vazio
+        Tipo = null; // Deixando o ComboBox vazio após criar
         Data = DateTime.Now;
         Valor = 0;
     }
@@ -89,7 +89,7 @@ public partial class TransacoesViewModel : ObservableObject
         if (_transacaoSelecionada != null)
         {
             _transacaoSelecionada.Descricao = Descricao;
-            _transacaoSelecionada.Tipo = Tipo;
+            _transacaoSelecionada.Tipo = Tipo ?? false; // Utilizando Tipo como bool
             _transacaoSelecionada.Data = Data;
             _transacaoSelecionada.Valor = Valor;
 
