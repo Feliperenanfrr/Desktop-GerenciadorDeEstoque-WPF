@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Model;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Services.Interfaces;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels;
 
@@ -16,6 +17,18 @@ public partial class ProdutoViewModel : ObservableObject
     [ObservableProperty]
     private Produto _produtoSelecionado;
 
+    [ObservableProperty]
+    private string _nome;
+
+    [ObservableProperty]
+    private int _quantidade;
+
+    [ObservableProperty]
+    private decimal _valorDeCusto;
+
+    [ObservableProperty]
+    private decimal _valorVenda;
+
     public ProdutoViewModel(IProdutoService produtoService)
     {
         _produtoService = produtoService;
@@ -26,7 +39,6 @@ public partial class ProdutoViewModel : ObservableObject
         EditarProdutoCommand = new RelayCommand(EditarProduto, () => _produtoSelecionado != null);
         ExcluirProdutoCommand = new RelayCommand(ExcluirProduto, () => _produtoSelecionado != null);
         ListarProdutosCommand = new RelayCommand(ListarProdutos);
-
     }
 
     public IRelayCommand CriarProdutoCommand { get; }
@@ -34,26 +46,43 @@ public partial class ProdutoViewModel : ObservableObject
     public IRelayCommand ExcluirProdutoCommand { get; }
     public IRelayCommand ListarProdutosCommand { get; }
 
-
     private void CriarProduto()
     {
+        if (string.IsNullOrWhiteSpace(Nome) || Quantidade <= 0 || ValorDeCusto <= 0 || ValorVenda <= 0)
+        {
+            MessageBox.Show("Preencha todos os campos corretamente!", "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+
         var novoProduto = new Produto
         {
-            Nome = "Novo Produto",
-            Quantidade = 10,
-            ValorDeCusto = 50.0m,
-            ValorVenda = 100.0m
+            Nome = Nome,
+            Quantidade = Quantidade,
+            ValorDeCusto = ValorDeCusto,
+            ValorVenda = ValorVenda
         };
 
         _produtoService.CriarProduto(novoProduto);
         _produtos.Add(novoProduto);
+
+        // Limpar os campos após criar
+        Nome = string.Empty;
+        Quantidade = 0;
+        ValorDeCusto = 0;
+        ValorVenda = 0;
     }
 
     private void EditarProduto()
     {
         if (_produtoSelecionado != null)
         {
+            _produtoSelecionado.Nome = Nome;
+            _produtoSelecionado.Quantidade = Quantidade;
+            _produtoSelecionado.ValorDeCusto = ValorDeCusto;
+            _produtoSelecionado.ValorVenda = ValorVenda;
+
             _produtoService.AtualizarProduto(_produtoSelecionado);
+            ListarProdutos();
         }
     }
 
@@ -63,6 +92,7 @@ public partial class ProdutoViewModel : ObservableObject
         {
             _produtoService.ExcluirProduto(_produtoSelecionado.Id);
             _produtos.Remove(_produtoSelecionado);
+            ProdutoSelecionado = null;
         }
     }
 
@@ -70,5 +100,4 @@ public partial class ProdutoViewModel : ObservableObject
     {
         Produtos = new ObservableCollection<Produto>(_produtoService.ListarProdutos());
     }
-
 }

@@ -17,17 +17,21 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Nome:" Grid.Row="0" />
-        <TextBox Text="{Binding ProdutoSelecionado.Nome, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Margin="93,0,0,5"/>
+        <TextBox Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="0" Margin="93,0,0,5"/>
 
         <TextBlock Text="Quantidade:" Grid.Row="1" />
-        <TextBox Text="{Binding ProdutoSelecionado.Quantidade, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Margin="93,0,0,5"/>
+        <TextBox Text="{Binding Quantidade, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="1" Margin="93,0,0,5"/>
 
         <TextBlock Text="Valor de Custo:" Grid.Row="2" />
-        <TextBox Text="{Binding ProdutoSelecionado.ValorDeCusto, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Margin="93,0,0,5"/>
+        <TextBox Text="{Binding ValorDeCusto, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="2" Margin="93,0,0,5"/>
 
         <TextBlock Text="Valor de Venda:" Grid.Row="3" />
-        <TextBox Text="{Binding ProdutoSelecionado.ValorVenda, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Margin="93,0,0,5"/>
-
+        <TextBox Text="{Binding ValorVenda, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="3" Margin="93,0,0,5"/>
+        
         <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,10,0,10">
             <Button Content="Criar Produto" Command="{Binding CriarProdutoCommand}" Width="120" Margin="5"/>
             <Button Content="Editar Produto" Command="{Binding EditarProdutoCommand}" Width="120" Margin="5"/>
