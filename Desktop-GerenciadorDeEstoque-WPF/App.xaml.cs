@@ -17,6 +17,7 @@ namespace Desktop_GerenciadorDeEstoque_WPF;
 /// </summary>
 public partial class App : Application
 {
+    public static IServiceProvider ServiceProvider { get; private set; }
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
@@ -33,13 +34,14 @@ public partial class App : Application
     private void ConfigureServices(IServiceCollection services)
     {
         services.AddDbContext<AppDbContext>();
-
-        services.AddScoped<IProdutoService, ProdutoService>();
+        
+        services.AddSingleton<IProdutoService, ProdutoService>();
 
         services.AddTransient<MainWindow>();
 
         services.AddTransient<ProdutoViewModel>();
 
         services.AddTransient<ProdutoView>();
+        
     }
 }
