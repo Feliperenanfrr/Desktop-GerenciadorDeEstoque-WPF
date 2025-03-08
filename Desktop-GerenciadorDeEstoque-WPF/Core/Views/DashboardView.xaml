@@ -6,8 +6,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Dashboard"
-        Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        Height="600" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3F4F6">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,39 +16,55 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Dashboard" FontSize="20" FontWeight="Bold" 
-                   HorizontalAlignment="Center" Margin="10"/>
+        <!-- Cabeçalho -->
+        <Border Background="#2C3E50" Padding="15" CornerRadius="0">
+            <TextBlock Text="Dashboard" FontSize="24" FontWeight="Bold" Foreground="White"
+                       HorizontalAlignment="Center"/>
+        </Border>
 
-        <Grid Grid.Row="1" Margin="10">
+        <Grid Grid.Row="1" Margin="20">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <!-- Gráfico Financeiro -->
-            <Border Grid.Column="0" BorderThickness="1" BorderBrush="Gray" Padding="10" CornerRadius="5">
+            <Border Grid.Column="0" Background="White" Padding="15" CornerRadius="10"
+                    BorderBrush="LightGray" BorderThickness="1" Effect="{DynamicResource ShadowEffect}">
                 <StackPanel>
-                    <TextBlock Text="Financeiro" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <wpf:CartesianChart Series="{Binding FinanceiroChart}" Height="200"/>
+                    <TextBlock Text="Financeiro" FontWeight="Bold" FontSize="16" Foreground="#34495E" 
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <wpf:CartesianChart Series="{Binding FinanceiroChart}" Height="220"/>
                 </StackPanel>
             </Border>
 
             <!-- Gráfico de Vendas -->
-            <Border Grid.Column="1" BorderThickness="1" BorderBrush="Gray" Padding="10" CornerRadius="5">
+            <Border Grid.Column="1" Background="White" Padding="15" CornerRadius="10"
+                    BorderBrush="LightGray" BorderThickness="1" Margin="10,0"
+                    Effect="{DynamicResource ShadowEffect}">
                 <StackPanel>
-                    <TextBlock Text="Vendas" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <wpf:CartesianChart Series="{Binding VendasChart}" Height="200"/>
+                    <TextBlock Text="Vendas" FontWeight="Bold" FontSize="16" Foreground="#34495E"
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <wpf:CartesianChart Series="{Binding VendasChart}" Height="220"/>
                 </StackPanel>
             </Border>
 
             <!-- Gráfico de Produtos -->
-            <Border Grid.Column="2" BorderThickness="1" BorderBrush="Gray" Padding="10" CornerRadius="5">
+            <Border Grid.Column="2" Background="White" Padding="15" CornerRadius="10"
+                    BorderBrush="LightGray" BorderThickness="1" Effect="{DynamicResource ShadowEffect}">
                 <StackPanel>
-                    <TextBlock Text="Produtos" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <wpf:CartesianChart Series="{Binding ProdutosChart}" Height="200"/>
+                    <TextBlock Text="Produtos" FontWeight="Bold" FontSize="16" Foreground="#34495E" 
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <wpf:CartesianChart Series="{Binding ProdutosChart}" Height="220"/>
                 </StackPanel>
             </Border>
         </Grid>
     </Grid>
+
+    <!-- Sombra suave para os cartões -->
+    <Window.Resources>
+        <DropShadowEffect x:Key="ShadowEffect" BlurRadius="10" ShadowDepth="3" Opacity="0.3"/>
+    </Window.Resources>
+
 </Window>
