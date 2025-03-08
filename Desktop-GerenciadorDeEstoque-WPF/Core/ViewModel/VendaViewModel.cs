@@ -73,15 +73,15 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels
                 DataVenda = DataVenda,
                 PrecoTotalVenda = ProdutoSelecionado.ValorVenda * Quantidade
             };
+            
+            novaVenda.DataVenda = novaVenda.DataVenda.ToUniversalTime();
 
             _vendasService.RegistrarVenda(novaVenda);
             Vendas.Add(novaVenda);
 
-            // Atualiza o estoque
             ProdutoSelecionado.Quantidade -= Quantidade;
             _produtoService.AtualizarProduto(ProdutoSelecionado);
 
-            // Atualiza a lista de produtos
             ProdutosDisponiveis = new ObservableCollection<Produto>(_produtoService.ListarProdutos());
 
             LimparCampos();
@@ -98,7 +98,6 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels
 
                 _vendasService.EditarVenda(VendaSelecionada);
 
-                // Atualizar a lista de vendas
                 Vendas = new ObservableCollection<Venda>(_vendasService.ListarVendas());
             }
         }
