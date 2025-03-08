@@ -21,7 +21,7 @@ public partial class App : Application
         
         ServiceProvider = serviceCollection.BuildServiceProvider();
 
-        var mainWindow = ServiceProvider.GetRequiredService<VendaView>(); // Testando outra View
+        var mainWindow = ServiceProvider.GetRequiredService<MaterialView>(); // Testando outra View
         mainWindow.Show();
     }
 
@@ -34,16 +34,19 @@ public partial class App : Application
         services.AddSingleton<IProdutoService, ProdutoService>();
         services.AddSingleton<IFinanceiroService, FinanceiroService>(); // Adicionei o Service
         services.AddSingleton<IVendaService, VendaService>();
+        services.AddSingleton<IMaterialService, MaterialService>();
 
 
         // Registrando os ViewModels
         services.AddTransient<ProdutoViewModel>();
         services.AddTransient<FinanceiroViewModel>();
         services.AddTransient<VendaViewModel>();
+        services.AddTransient<MaterialViewModel>();
 
         // Registrando as Views
         services.AddTransient<ProdutoView>();
         services.AddTransient<TransacaoView>();
         services.AddTransient<VendaView>();
+        services.AddTransient<MaterialView>();
     }
 }

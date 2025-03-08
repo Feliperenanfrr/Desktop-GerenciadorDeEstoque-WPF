@@ -1,11 +1,21 @@
 ﻿using System.Windows;
+using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Desktop_GerenciadorDeEstoque_WPF.Core.Views;
-
-public partial class MaterialView : Window
+namespace Desktop_GerenciadorDeEstoque_WPF.Views
 {
-    public MaterialView()
+    public partial class MaterialView : Window
     {
-        InitializeComponent();
+        public MaterialView()
+        {
+            InitializeComponent();
+            DataContext = App.ServiceProvider.GetRequiredService<MaterialViewModel>(); // Instância padrão do ViewModel
+        }
+
+        public MaterialView(MaterialViewModel viewModel)
+        {
+            InitializeComponent();
+            DataContext = viewModel;
+        }
     }
 }

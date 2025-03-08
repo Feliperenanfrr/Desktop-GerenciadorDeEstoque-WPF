@@ -21,7 +21,6 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.Services
             if (venda == null || venda.Produto == null || venda.Quantidade <= 0 || venda.PrecoTotalVenda <= 0)
                 throw new ArgumentException("Venda inválida. Verifique os dados informados.");
 
-            // Verifica se o produto tem estoque suficiente antes de registrar a venda
             var produto = _context.Produtos.Find(venda.Produto.Id);
             if (produto == null)
                 throw new ArgumentException("Produto não encontrado.");
@@ -29,7 +28,6 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.Services
             if (produto.Quantidade < venda.Quantidade)
                 throw new InvalidOperationException("Estoque insuficiente para realizar a venda.");
 
-            // Atualiza o estoque do produto
             produto.Quantidade -= venda.Quantidade;
 
             _context.Vendas.Add(venda);
