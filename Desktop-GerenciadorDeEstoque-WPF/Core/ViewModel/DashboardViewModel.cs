@@ -1,87 +1,38 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Desktop_GerenciadorDeEstoque_WPF.Core.Services;
-using Desktop_GerenciadorDeEstoque_WPF.Core.Model;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Desktop_GerenciadorDeEstoque_WPF.Core.Services.Interfaces;
 using LiveCharts;
-using LiveCharts.Wpf;
+using System.Threading.Tasks;
 
-namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
+namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels
 {
-    public class DashboardViewModel
+    public partial class DashboardViewModel : ObservableObject
     {
-        private readonly FinanceiroService _financeiroService;
-        private readonly VendaService _vendaService;
-        private readonly ProdutoService _produtoService;
+        private readonly IDashboardService _dashboardService;
 
-        public SeriesCollection FinanceiroChart { get; set; }
-        public SeriesCollection VendasChart { get; set; }
-        public SeriesCollection ProdutosChart { get; set; }
-        
-        public DashboardViewModel(FinanceiroService financeiroService, VendaService vendaService, ProdutoService produtoService)
+        [ObservableProperty]
+        private SeriesCollection _financeiroChart;
+
+        [ObservableProperty]
+        private SeriesCollection _vendasChart;
+
+        [ObservableProperty]
+        private SeriesCollection _produtosChart;
+
+        public DashboardViewModel(IDashboardService dashboardService)
         {
-            _financeiroService = financeiroService;
-            _vendaService = vendaService;
-            _produtoService = produtoService;
-            
-            CarregarGraficos();
+            _dashboardService = dashboardService;
+            AtualizarGraficosCommand = new AsyncRelayCommand(AtualizarGraficos);
+            _ = AtualizarGraficos(); // Carregar os gráficos ao iniciar
         }
 
-        private void CarregarGraficos()
-        {
-            CarregarGraficoFinanceiro();
-            CarregarGraficoVendas();
-            CarregarGraficoProdutos();
-        }
+        public IAsyncRelayCommand AtualizarGraficosCommand { get; }
 
-        private void CarregarGraficoFinanceiro()
+        private async Task AtualizarGraficos()
         {
-            var transacoes = _financeiroService.ListarTransacoes();
-            var entradas = transacoes.Where(t => !t.Tipo).Sum(t => t.Valor);
-            var saidas = transacoes.Where(t => t.Tipo).Sum(t => t.Valor);
-
-            FinanceiroChart = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "Entradas",
-                    Values = new ChartValues<decimal> { entradas }
-                },
-                new ColumnSeries
-                {
-                    Title = "Saídas",
-                    Values = new ChartValues<decimal> { saidas }
-                }
-            };
-        }
-
-        private void CarregarGraficoVendas()
-        {
-            var vendas = _vendaService.ListarVendas();
-            var totalVendas = vendas.Sum(v => v.PrecoTotalVenda);
-            
-            VendasChart = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "Vendas",
-                    Values = new ChartValues<decimal> { totalVendas }
-                }
-            };
-        }
-
-        private void CarregarGraficoProdutos()
-        {
-            var produtos = _produtoService.ListarProdutos();
-            
-            ProdutosChart = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "Produtos em Estoque",
-                    Values = new ChartValues<int>(produtos.Select(p => p.Quantidade))
-                }
-            };
+            FinanceiroChart = await _dashboardService.ObterGraficoFinanceiroAsync();
+            VendasChart = await _dashboardService.ObterGraficoVendasAsync();
+            ProdutosChart = await _dashboardService.ObterGraficoProdutosAsync();
         }
     }
 }

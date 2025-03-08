@@ -10,5 +10,6 @@ public interface IProdutoService
     void AtualizarProduto(Produto produto);
     void ExcluirProduto(int id);
     Produto BuscarProdutoPorId(int id);
+    Task<List<Produto>> ListarProdutosAsync(); 
     
 }

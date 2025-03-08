@@ -63,4 +63,10 @@ public class ProdutoService : IProdutoService
         
         return _context.Produtos.Find(id);
     }
+    
+    public async Task<List<Produto>> ListarProdutosAsync()
+    {
+        return await Task.Run(() => ListarProdutos());
+    }
+
 }

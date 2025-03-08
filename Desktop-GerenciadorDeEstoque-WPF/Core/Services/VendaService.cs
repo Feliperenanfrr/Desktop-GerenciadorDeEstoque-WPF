@@ -77,5 +77,11 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.Services
         {
             return _context.Vendas.Sum(v => v.PrecoTotalVenda);
         }
+        
+        public async Task<List<Venda>> ListarVendasAsync()
+        {
+            return await Task.Run(() => ListarVendas());
+        }
+
     }
 }

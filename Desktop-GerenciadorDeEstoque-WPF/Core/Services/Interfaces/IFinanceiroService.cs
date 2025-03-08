@@ -11,4 +11,5 @@ public interface IFinanceiroService
     Financeiro BuscarTransacaoPorId(int id);
     List<Financeiro> FiltrarTransacoesPorData(DateTime dataInicial, DateTime dataFinal);
     decimal CalcularSaldoAtual();
+    Task<List<Financeiro>> ListarTransacoesAsync();
 }

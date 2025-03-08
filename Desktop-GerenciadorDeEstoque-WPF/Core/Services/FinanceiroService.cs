@@ -87,4 +87,10 @@ public class FinanceiroService : IFinanceiroService
 
         return entradas - saidas;
     }
+    
+    public async Task<List<Financeiro>> ListarTransacoesAsync()
+    {
+        return await Task.Run(() => ListarTransacoes());
+    }
+
 }

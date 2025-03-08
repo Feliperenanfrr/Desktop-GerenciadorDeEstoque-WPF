@@ -13,5 +13,6 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.Services.Interfaces
         List<Venda> ListarVendas();
         List<Venda> FiltrarVendasPorData(DateTime inicio, DateTime fim);
         decimal CalcularTotalVendas();
+        Task<List<Venda>> ListarVendasAsync();
     }
 }
