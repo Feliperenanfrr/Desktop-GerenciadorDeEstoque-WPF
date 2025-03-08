@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel;
 using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,13 +9,9 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Views
         public DashboardView()
         {
             InitializeComponent();
+            
+            // Configurando o DataContext usando o ServiceProvider
             DataContext = App.ServiceProvider.GetRequiredService<DashboardViewModel>();
-        }
-
-        public DashboardView(DashboardViewModel viewModel)
-        {
-            InitializeComponent();
-            DataContext = viewModel;
         }
     }
 }

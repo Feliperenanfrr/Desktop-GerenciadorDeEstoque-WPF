@@ -1,72 +1,53 @@
 ﻿<Window x:Class="Desktop_GerenciadorDeEstoque_WPF.Views.DashboardView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        Title="Dashboard" Height="500" Width="800"
-        Background="#f0f0f0" WindowStartupLocation="CenterScreen">
-    
-    <Grid Margin="20">
+        xmlns:wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Dashboard"
+        Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
 
-        <!-- Gráfico Financeiro -->
-        <Border Grid.Row="0" Grid.Column="0" Background="White" CornerRadius="10" Padding="15" Margin="5">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.3"/>
-            </Border.Effect>
-            <StackPanel>
-                <TextBlock Text="Financeiro: Entradas vs. Saídas" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-                <lvc:CartesianChart Series="{Binding FinanceiroSeries}" LegendLocation="Bottom">
-                    <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Title="Tipo" Labels="{Binding FinanceiroLabels}"/>
-                    </lvc:CartesianChart.AxisX>
-                    <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Title="Valor (R$)"/>
-                    </lvc:CartesianChart.AxisY>
-                </lvc:CartesianChart>
-            </StackPanel>
-        </Border>
-        
-        <!-- Gráfico de Vendas -->
-        <Border Grid.Row="0" Grid.Column="1" Background="White" CornerRadius="10" Padding="15" Margin="5">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.3"/>
-            </Border.Effect>
-            <StackPanel>
-                <TextBlock Text="Total de Vendas" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-                <lvc:CartesianChart Series="{Binding VendasSeries}" LegendLocation="Bottom">
-                    <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Title="Data" Labels="{Binding VendasLabels}"/>
-                    </lvc:CartesianChart.AxisX>
-                    <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Title="Total (R$)"/>
-                    </lvc:CartesianChart.AxisY>
-                </lvc:CartesianChart>
-            </StackPanel>
-        </Border>
+        <TextBlock Text="Dashboard" FontSize="20" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="10"/>
 
-        <!-- Gráfico de Produtos -->
-        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="White" CornerRadius="10" Padding="15" Margin="5">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.3"/>
-            </Border.Effect>
-            <StackPanel>
-                <TextBlock Text="Estoque de Produtos" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-                <lvc:CartesianChart Series="{Binding ProdutosSeries}" LegendLocation="Bottom">
-                    <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Title="Produtos" Labels="{Binding ProdutosLabels}"/>
-                    </lvc:CartesianChart.AxisX>
-                    <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Title="Quantidade"/>
-                    </lvc:CartesianChart.AxisY>
-                </lvc:CartesianChart>
-            </StackPanel>
-        </Border>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Gráfico Financeiro -->
+            <Border Grid.Column="0" BorderThickness="1" BorderBrush="Gray" Padding="10" CornerRadius="5">
+                <StackPanel>
+                    <TextBlock Text="Financeiro" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <wpf:CartesianChart Series="{Binding FinanceiroChart}" Height="200"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Gráfico de Vendas -->
+            <Border Grid.Column="1" BorderThickness="1" BorderBrush="Gray" Padding="10" CornerRadius="5">
+                <StackPanel>
+                    <TextBlock Text="Vendas" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <wpf:CartesianChart Series="{Binding VendasChart}" Height="200"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Gráfico de Produtos -->
+            <Border Grid.Column="2" BorderThickness="1" BorderBrush="Gray" Padding="10" CornerRadius="5">
+                <StackPanel>
+                    <TextBlock Text="Produtos" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <wpf:CartesianChart Series="{Binding ProdutosChart}" Height="200"/>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Window>
