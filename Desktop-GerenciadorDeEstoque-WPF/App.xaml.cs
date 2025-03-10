@@ -24,7 +24,7 @@ namespace Desktop_GerenciadorDeEstoque_WPF
             ServiceProvider = serviceCollection.BuildServiceProvider();
 
             // Define o DashboardView como a janela principal para teste
-            var mainWindow = ServiceProvider.GetRequiredService<DashboardView>(); 
+            var mainWindow = ServiceProvider.GetRequiredService<MainWindow>(); 
             mainWindow.Show();
         }
 
@@ -53,6 +53,7 @@ namespace Desktop_GerenciadorDeEstoque_WPF
             services.AddTransient<VendaView>();
             services.AddTransient<MaterialView>();
             services.AddTransient<DashboardView>();
+            services.AddTransient<MainWindow>();
         }
     }
 }

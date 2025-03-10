@@ -9,7 +9,7 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Views
         public TransacaoView()
         {
             InitializeComponent();
-            DataContext = App.ServiceProvider.GetRequiredService<FinanceiroViewModel>(); // Instância padrão do ViewModel
+            DataContext = App.ServiceProvider.GetRequiredService<FinanceiroViewModel>();
         }
 
         public TransacaoView(FinanceiroViewModel viewModel)

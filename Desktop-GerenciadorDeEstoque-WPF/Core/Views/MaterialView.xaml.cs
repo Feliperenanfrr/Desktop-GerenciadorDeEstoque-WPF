@@ -9,7 +9,7 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Views
         public MaterialView()
         {
             InitializeComponent();
-            DataContext = App.ServiceProvider.GetRequiredService<MaterialViewModel>(); // Instância padrão do ViewModel
+            DataContext = App.ServiceProvider.GetRequiredService<MaterialViewModel>();
         }
 
         public MaterialView(MaterialViewModel viewModel)
