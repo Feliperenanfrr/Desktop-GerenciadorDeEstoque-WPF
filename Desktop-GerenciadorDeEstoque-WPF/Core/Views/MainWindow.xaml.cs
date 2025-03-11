@@ -10,9 +10,5 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Views
             InitializeComponent();
         }
 
-        private void BtnProdutos_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.Content = new ProdutoView(); // Carregar ProdutoView no ContentControl
-        }
     }
 }

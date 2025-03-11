@@ -17,5 +17,11 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Views
             InitializeComponent();
             DataContext = viewModel;
         }
+        
+        private void BtnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
