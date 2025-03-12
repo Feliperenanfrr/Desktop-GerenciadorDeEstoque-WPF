@@ -22,9 +22,6 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
             }
         }
 
-
-
-
         public MainViewModel()
         {
             HomeVm = new HomeViewModel();

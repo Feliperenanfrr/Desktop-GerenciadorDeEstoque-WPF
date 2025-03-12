@@ -6,7 +6,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 
-namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels;
+namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel;
 
 public partial class FinanceiroViewModel : ObservableObject
 {

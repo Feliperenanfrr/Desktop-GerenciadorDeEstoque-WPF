@@ -4,7 +4,7 @@ using Desktop_GerenciadorDeEstoque_WPF.Core.Services.Interfaces;
 using LiveCharts;
 using System.Threading.Tasks;
 
-namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels
+namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
 {
     public partial class DashboardViewModel : ObservableObject
     {

@@ -5,7 +5,7 @@ using Desktop_GerenciadorDeEstoque_WPF.Core.Services.Interfaces;
 using System.Collections.ObjectModel;
 using System.Windows;
 
-namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels;
+namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel;
 
 public partial class MaterialViewModel : ObservableObject
 {

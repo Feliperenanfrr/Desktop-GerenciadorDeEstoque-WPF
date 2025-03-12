@@ -3,7 +3,6 @@ using System.Windows;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Services;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Services.Interfaces;
 using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel;
-using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels;
 using Desktop_GerenciadorDeEstoque_WPF.Data;
 using Desktop_GerenciadorDeEstoque_WPF.Views;
 using Microsoft.Extensions.DependencyInjection;

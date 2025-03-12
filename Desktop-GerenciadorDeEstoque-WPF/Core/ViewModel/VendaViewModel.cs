@@ -7,7 +7,7 @@ using Desktop_GerenciadorDeEstoque_WPF.Core.Model;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Services.Interfaces;
 using System.Windows;
 
-namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels
+namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
 {
     public partial class VendaViewModel : ObservableObject
     {

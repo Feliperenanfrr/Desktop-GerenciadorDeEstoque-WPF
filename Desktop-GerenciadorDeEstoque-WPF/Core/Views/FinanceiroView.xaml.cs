@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModels;
+using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Desktop_GerenciadorDeEstoque_WPF.Views
