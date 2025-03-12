@@ -10,6 +10,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Images\dog-removebg-preview.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Images\dog-removebg-preview.png" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="Avalonia" Version="11.2.5" />
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
       <PackageReference Include="LiveCharts" Version="0.9.7" />
@@ -29,7 +37,6 @@
 
     <ItemGroup>
       <Folder Include="Fonts\" />
-      <Folder Include="Images\" />
       <Folder Include="Tests\" />
       <Folder Include="UI\" />
     </ItemGroup>
