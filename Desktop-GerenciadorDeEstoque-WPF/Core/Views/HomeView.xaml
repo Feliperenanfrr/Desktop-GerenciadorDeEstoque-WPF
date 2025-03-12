@@ -31,12 +31,12 @@
 
                 <Grid>
                     <StackPanel>
-                        <TextBlock Text="Melhor clínica veterinária&#x0a;de Campina Grande"
+                        <TextBlock Text="Melhor loja de calçados&#x0a;do Nordeste"
                                    Foreground="White"
                                    FontSize="28"
                                    Margin="20,10,10,0"/>
 
-                        <TextBlock Text="Tenha um bom dia!"
+                        <TextBlock Text="Montenegro Calçados"
                                    Foreground="White"
                                    FontSize="18"
                                    Margin="20,10,10,0"/>
@@ -44,9 +44,9 @@
 
                     <Image  Width="250"
                             Height="230"
-                            Source="pack://application:,,,/Images/dog-removebg-preview.png"
+                            Source="pack://application:,,,/Images/Salto-removebg-preview.png"
                             HorizontalAlignment="Left"
-                            VerticalAlignment="Top" Margin="238,20,0,0" RenderTransformOrigin="0.5,0.5">
+                            VerticalAlignment="Top" Margin="201,20,0,0" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -81,16 +81,16 @@
                     <Setter Property="Margin" Value="15, 0, 0, 0"/>
                 </Style>
             </StackPanel.Resources>
-            
-            
-            <TextBlock Text="Próximos Atendimentos"
+
+
+            <TextBlock Text="Produtos mais vendidos"
                            Foreground="White"
                            FontSize="20"
                            HorizontalAlignment="Left"
                            Margin="0,0,0,10"/>
 
             <StackPanel Orientation="Horizontal">
-                
+
                 <Border Width="150"
                         Height="150"
                         Background="#844eff"
@@ -110,8 +110,8 @@
                 <Border Width="150"
                         Height="150"
                         Background="#ecff4e"
-                        CornerRadius="10"/>   
-                
+                        CornerRadius="10"/>
+
             </StackPanel>
         </StackPanel>
     </StackPanel>

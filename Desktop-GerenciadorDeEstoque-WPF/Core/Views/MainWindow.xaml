@@ -27,28 +27,34 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="CiVet"
+            <TextBlock Text="Montenegro"
                          VerticalAlignment="Center"
                          HorizontalAlignment="Left"
                          Foreground="White"
                          FontSize="22"
-                         Margin="60,0,0,0"/>
+                         Margin="20,0,0,0"/>
 
             <StackPanel Grid.Row="1">
 
-                <RadioButton Content="Agendamentos"
+                <RadioButton Content="Produtos"
                                Height="50"
                                Foreground="White"
                                FontSize="14"
                                Style="{StaticResource MenuButtonTheme}"/>
 
-                <RadioButton Content="Clientes"
+                <RadioButton Content="Vendas"
                                Height="50"
                                Foreground="White"
                                FontSize="14"
                                Style="{StaticResource MenuButtonTheme}"/>
 
-                <RadioButton Content="Pets"
+                <RadioButton Content="Financeiro"
+                               Height="50"
+                               Foreground="White"
+                               FontSize="14"
+                               Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Materiais"
                                Height="50"
                                Foreground="White"
                                FontSize="14"
@@ -58,7 +64,7 @@
                                Height="50"
                                Foreground="White"
                                FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"/>
+                               Style="{StaticResource MenuButtonTheme}"/>       
             </StackPanel>
 
             <TextBox Width="250"

@@ -11,10 +11,12 @@
 
     <ItemGroup>
       <None Remove="Images\dog-removebg-preview.png" />
+      <None Remove="Images\Salto-removebg-preview.png" />
     </ItemGroup>
 
     <ItemGroup>
       <Resource Include="Images\dog-removebg-preview.png" />
+      <Resource Include="Images\Salto-removebg-preview.png" />
     </ItemGroup>
 
     <ItemGroup>
