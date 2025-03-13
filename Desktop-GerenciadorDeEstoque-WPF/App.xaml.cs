@@ -3,8 +3,8 @@ using System.Windows;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Services;
 using Desktop_GerenciadorDeEstoque_WPF.Core.Services.Interfaces;
 using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel;
+using Desktop_GerenciadorDeEstoque_WPF.Core.Views;
 using Desktop_GerenciadorDeEstoque_WPF.Data;
-using Desktop_GerenciadorDeEstoque_WPF.Views;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Desktop_GerenciadorDeEstoque_WPF
@@ -45,6 +45,9 @@ namespace Desktop_GerenciadorDeEstoque_WPF
             services.AddTransient<VendaViewModel>();
             services.AddTransient<MaterialViewModel>();
             services.AddTransient<DashboardViewModel>();
+            services.AddTransient<HomeViewModel>();
+            services.AddTransient<DiscoveryViewModel>();
+            services.AddTransient<MainViewModel>();
 
             // Registrando as Views
             services.AddTransient<ProdutoView>();
@@ -53,6 +56,8 @@ namespace Desktop_GerenciadorDeEstoque_WPF
             services.AddTransient<MaterialView>();
             services.AddTransient<DashboardView>();
             services.AddTransient<MainWindow>();
+            services.AddTransient<HomeView>();
+            services.AddTransient<DiscoveryView>();
         }
     }
 }

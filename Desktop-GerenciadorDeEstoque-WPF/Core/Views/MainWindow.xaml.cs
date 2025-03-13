@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using Desktop_GerenciadorDeEstoque_WPF.Views;
 
-namespace Desktop_GerenciadorDeEstoque_WPF.Views
+namespace Desktop_GerenciadorDeEstoque_WPF.Core.Views
 {
     public partial class MainWindow : Window
     {
