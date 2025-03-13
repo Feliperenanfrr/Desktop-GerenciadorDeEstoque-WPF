@@ -36,11 +36,20 @@
 
             <StackPanel Grid.Row="1">
 
+                <RadioButton Content="Home"
+                               Height="50"
+                               Foreground="White"
+                               FontSize="14"
+                               Style="{StaticResource MenuButtonTheme}"
+                               IsChecked="True"
+                               Command="{Binding HomeViewCommand}"/>
+                
                 <RadioButton Content="Produtos"
                                Height="50"
                                Foreground="White"
                                FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"/>
+                               Style="{StaticResource MenuButtonTheme}"
+                               Command="{Binding DiscoveryViewCommand}"/>
 
                 <RadioButton Content="Vendas"
                                Height="50"
@@ -64,7 +73,7 @@
                                Height="50"
                                Foreground="White"
                                FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"/>       
+                               Style="{StaticResource MenuButtonTheme}"/>
             </StackPanel>
 
             <TextBox Width="250"

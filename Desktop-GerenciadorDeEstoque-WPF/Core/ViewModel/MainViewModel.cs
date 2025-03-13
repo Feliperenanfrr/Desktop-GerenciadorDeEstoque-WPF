@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,18 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
 {
     class MainViewModel : ObservableObject
     {
-        public HomeViewModel HomeVm { get; set; }
+        public RelayCommand HomeViewCommand { get; set; }
+        public RelayCommand DiscoveryViewCommand { get; set; }
+
+
+        public HomeViewModel HomeVM { get; set; }
+        public DiscoveryViewModel DiscoveryVM { get; set; }
         private object _currentView;
 
         public object CurrentView
         {
             get { return _currentView; }
-            set 
+            set
             {
                 _currentView = value;
                 OnPropertyChanged();
@@ -24,8 +30,19 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
 
         public MainViewModel()
         {
-            HomeVm = new HomeViewModel();
-            CurrentView = HomeVm;
+            HomeVM = new HomeViewModel();
+            DiscoveryVM = new DiscoveryViewModel();
+            CurrentView = HomeVM;
+
+            HomeViewCommand = new RelayCommand(() =>
+            {
+                CurrentView = HomeVM;
+            });
+
+            DiscoveryViewCommand = new RelayCommand(() =>
+            {
+                CurrentView = DiscoveryVM;
+            });
         }
     }
 }
