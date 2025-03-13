@@ -10,6 +10,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <AvaloniaXaml Remove="UI\**" />
+      <Compile Remove="UI\**" />
+      <EmbeddedResource Remove="UI\**" />
+      <None Remove="UI\**" />
+      <Page Remove="UI\**" />
+    </ItemGroup>
+
+    <ItemGroup>
       <None Remove="Images\dog-removebg-preview.png" />
       <None Remove="Images\Salto-removebg-preview.png" />
     </ItemGroup>
@@ -40,7 +48,6 @@
     <ItemGroup>
       <Folder Include="Fonts\" />
       <Folder Include="Tests\" />
-      <Folder Include="UI\" />
     </ItemGroup>
 
     <ItemGroup>
