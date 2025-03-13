@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Desktop_GerenciadorDeEstoque_WPF.Views
+namespace Desktop_GerenciadorDeEstoque_WPF.Core.Views
 {
     public partial class ProdutoView : UserControl
     {

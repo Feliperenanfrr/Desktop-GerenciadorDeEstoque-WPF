@@ -1,4 +1,4 @@
-﻿<Window x:Class="Desktop_GerenciadorDeEstoque_WPF.Views.MaterialView"
+﻿<Window x:Class="Desktop_GerenciadorDeEstoque_WPF.Core.Views.MaterialView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Gerenciamento de Materiais" Height="500" Width="700"

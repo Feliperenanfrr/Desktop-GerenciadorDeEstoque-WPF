@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Desktop_GerenciadorDeEstoque_WPF.Views.ProdutoView"
+﻿<UserControl x:Class="Desktop_GerenciadorDeEstoque_WPF.Core.Views.ProdutoView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Background="#f0f0f0">
