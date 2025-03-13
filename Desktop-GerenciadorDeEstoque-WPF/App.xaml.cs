@@ -16,14 +16,14 @@ namespace Desktop_GerenciadorDeEstoque_WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            
+
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
-            
+
             ServiceProvider = serviceCollection.BuildServiceProvider();
 
-            // Define o DashboardView como a janela principal para teste
-            var mainWindow = ServiceProvider.GetRequiredService<MainWindow>(); 
+            // Define o MainWindow como a janela principal
+            var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
         }
 
@@ -37,7 +37,7 @@ namespace Desktop_GerenciadorDeEstoque_WPF
             services.AddSingleton<IFinanceiroService, FinanceiroService>();
             services.AddSingleton<IVendaService, VendaService>();
             services.AddSingleton<IMaterialService, MaterialService>();
-            services.AddSingleton<IDashboardService, DashboardService>(); // 🔹 Adicionado para corrigir erro
+            services.AddSingleton<IDashboardService, DashboardService>();
 
             // Registrando os ViewModels
             services.AddTransient<ProdutoViewModel>();

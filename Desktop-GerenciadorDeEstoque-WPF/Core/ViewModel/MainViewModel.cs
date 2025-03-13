@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 
 namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
 {
-    class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand DiscoveryViewCommand { get; set; }
+        public RelayCommand ProdutoViewCommand { get; set; }
 
 
         public HomeViewModel HomeVM { get; set; }
         public DiscoveryViewModel DiscoveryVM { get; set; }
+        public ProdutoViewModel ProdutoVM { get; set; }
         private object _currentView;
 
         public object CurrentView
@@ -28,10 +30,11 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
             }
         }
 
-        public MainViewModel()
+        public MainViewModel(HomeViewModel homeVM, DiscoveryViewModel discoveryVM, ProdutoViewModel produtoVM)
         {
             HomeVM = new HomeViewModel();
             DiscoveryVM = new DiscoveryViewModel();
+            ProdutoVM = produtoVM;
             CurrentView = HomeVM;
 
             HomeViewCommand = new RelayCommand(() =>
@@ -42,6 +45,11 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
             DiscoveryViewCommand = new RelayCommand(() =>
             {
                 CurrentView = DiscoveryVM;
+            });
+
+            ProdutoViewCommand = new RelayCommand(() => 
+            {
+                CurrentView = ProdutoVM;
             });
         }
     }
