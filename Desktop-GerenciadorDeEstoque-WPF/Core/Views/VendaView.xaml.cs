@@ -1,10 +1,11 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Desktop_GerenciadorDeEstoque_WPF.Core.Views
 {
-    public partial class VendaView : Window
+    public partial class VendaView : UserControl
     {
         public VendaView()
         {
@@ -16,11 +17,6 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.Views
         {
             InitializeComponent();
             DataContext = viewModel;
-        }
-        
-        private void BtnVoltar_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
     }

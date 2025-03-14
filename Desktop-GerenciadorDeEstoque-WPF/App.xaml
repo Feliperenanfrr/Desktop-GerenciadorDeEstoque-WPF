@@ -25,6 +25,10 @@
                 <view:ProdutoView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:VendaViewModel}">
+                <view:VendaView/>
+            </DataTemplate>
+
 
         </ResourceDictionary>
     </Application.Resources>
