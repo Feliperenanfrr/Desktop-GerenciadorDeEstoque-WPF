@@ -46,18 +46,18 @@ namespace Desktop_GerenciadorDeEstoque_WPF
             services.AddTransient<MaterialViewModel>();
             services.AddTransient<DashboardViewModel>();
             services.AddTransient<HomeViewModel>();
-            services.AddTransient<DiscoveryViewModel>();
             services.AddTransient<MainViewModel>();
 
             // Registrando as Views
             services.AddTransient<ProdutoView>();
-            services.AddTransient<TransacaoView>();
+            services.AddTransient<FinanceiroView>();
             services.AddTransient<VendaView>();
             services.AddTransient<MaterialView>();
             services.AddTransient<DashboardView>();
             services.AddTransient<MainWindow>();
             services.AddTransient<HomeView>();
             services.AddTransient<DiscoveryView>();
+            services.AddTransient<FinanceiroView>();
         }
     }
 }

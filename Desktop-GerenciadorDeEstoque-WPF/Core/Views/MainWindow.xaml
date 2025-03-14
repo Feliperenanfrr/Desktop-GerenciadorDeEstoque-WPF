@@ -58,19 +58,22 @@
                                Height="50"
                                Foreground="White"
                                FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"/>
+                               Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding FinanceiroViewCommand}"/>
 
                 <RadioButton Content="Materiais"
                                Height="50"
                                Foreground="White"
                                FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"/>
+                               Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding MaterialViewCommand}"/>
 
                 <RadioButton Content="Relatórios"
                                Height="50"
                                Foreground="White"
                                FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"/>
+                               Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding RelatoriosViewCommand}"/>
             </StackPanel>
 
             <TextBox Width="250"

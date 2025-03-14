@@ -1,4 +1,4 @@
-﻿<Window x:Class="Desktop_GerenciadorDeEstoque_WPF.Core.Views.TransacaoView"
+﻿<Window x:Class="Desktop_GerenciadorDeEstoque_WPF.Core.Views.FinanceiroView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Gerenciamento Financeiro" Height="500" Width="700"

@@ -14,12 +14,19 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
         public RelayCommand DiscoveryViewCommand { get; set; }
         public RelayCommand ProdutoViewCommand { get; set; }
         public RelayCommand VendaViewCommand { get; set; }
+        public RelayCommand FinanceiroViewCommand { get; set; }
+        public RelayCommand MaterialViewCommand { get; set; }
+        public RelayCommand DashboardViewCommand { get; set; }
 
 
         public HomeViewModel HomeVM { get; set; }
-        public DiscoveryViewModel DiscoveryVM { get; set; }
         public ProdutoViewModel ProdutoVM { get; set; }
         public VendaViewModel VendaVM { get; set; }
+        public FinanceiroViewModel FinanceiroVM { get; set; }
+        public MaterialViewModel MaterialVM { get; set; }
+        public DashboardViewModel DashboardVM { get; set; }
+
+
         private object _currentView;
 
         public object CurrentView
@@ -32,12 +39,15 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
             }
         }
 
-        public MainViewModel(HomeViewModel homeVM,VendaViewModel vendaVM, DiscoveryViewModel discoveryVM, ProdutoViewModel produtoVM)
+        public MainViewModel(VendaViewModel vendaVM, ProdutoViewModel produtoVM, FinanceiroViewModel financeiroVM, 
+            MaterialViewModel materialVM, DashboardViewModel dashboardVM)
         {
             HomeVM = new HomeViewModel();
-            DiscoveryVM = new DiscoveryViewModel();
             ProdutoVM = produtoVM;
             VendaVM = vendaVM;
+            FinanceiroVM = financeiroVM;
+            MaterialVM = materialVM;
+            DashboardVM = dashboardVM;
             CurrentView = HomeVM;
 
 
@@ -46,10 +56,6 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
                 CurrentView = HomeVM;
             });
 
-            DiscoveryViewCommand = new RelayCommand(() =>
-            {
-                CurrentView = DiscoveryVM;
-            });
 
             ProdutoViewCommand = new RelayCommand(() => 
             {
@@ -59,6 +65,21 @@ namespace Desktop_GerenciadorDeEstoque_WPF.Core.ViewModel
             VendaViewCommand = new RelayCommand(() =>
             {
                 CurrentView = VendaVM;
+            });
+
+            FinanceiroViewCommand = new RelayCommand(() =>
+            {
+                CurrentView = FinanceiroVM;
+            });
+
+            MaterialViewCommand = new RelayCommand(() =>
+            {
+                CurrentView = MaterialVM;
+            });
+
+            DashboardViewCommand = new RelayCommand(() =>
+            {
+                CurrentView = DashboardVM;
             });
         }
     }

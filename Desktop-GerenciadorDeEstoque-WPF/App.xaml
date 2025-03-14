@@ -17,16 +17,24 @@
                 <view:HomeView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:DiscoveryViewModel}">
-                <view:DiscoveryView/>
-            </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:ProdutoViewModel}">
                 <view:ProdutoView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:VendaViewModel}">
                 <view:VendaView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:FinanceiroViewModel}">
+                <view:FinanceiroView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:MaterialViewModel}">
+                <view:MaterialView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:DashboardViewModel}">
+                <view:DashboardView/>
             </DataTemplate>
 
 

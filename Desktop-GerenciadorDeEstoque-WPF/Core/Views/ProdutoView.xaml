@@ -16,11 +16,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Botão de Voltar -->
-        <Button Content="Voltar" Click="BtnVoltar_Click"
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Padding="5" Margin="5" Background="#2196F3" Foreground="White"/>
-
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>

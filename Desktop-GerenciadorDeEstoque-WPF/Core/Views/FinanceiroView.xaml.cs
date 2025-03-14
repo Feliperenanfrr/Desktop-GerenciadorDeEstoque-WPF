@@ -4,15 +4,15 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Desktop_GerenciadorDeEstoque_WPF.Core.Views
 {
-    public partial class TransacaoView : Window
+    public partial class FinanceiroView : Window
     {
-        public TransacaoView()
+        public FinanceiroView()
         {
             InitializeComponent();
             DataContext = App.ServiceProvider.GetRequiredService<FinanceiroViewModel>();
         }
 
-        public TransacaoView(FinanceiroViewModel viewModel)
+        public FinanceiroView(FinanceiroViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;
