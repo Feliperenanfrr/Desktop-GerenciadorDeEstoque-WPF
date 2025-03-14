@@ -10,88 +10,61 @@
         Background="Transparent"
         AllowsTransparency="True">
 
-    <Border Background="#272537"
-              CornerRadius="20">
+    <Border Background="#272537" CornerRadius="20">
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <!-- Barra de título -->
+                <RowDefinition Height="*"/>
+                <!-- Conteúdo principal -->
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
+                <!-- Menu lateral -->
                 <ColumnDefinition/>
+                <!-- Área de conteúdo -->
             </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+            <!-- Barra de título personalizada -->
+            <DockPanel Grid.ColumnSpan="2" Background="#1E1C2D" Height="40">
+                <TextBlock Text="Gerenciador de Estoque"
+                           Foreground="White"
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
 
-            <TextBlock Text="Montenegro"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Left"
-                         Foreground="White"
-                         FontSize="22"
-                         Margin="20,0,0,0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!-- Minimizar -->
+                    <Button Content="🗕" Width="40" Height="30" Background="Transparent" Foreground="White"
+                            Click="Minimize_Click"/>
+                    <!-- Maximizar/Restaurar -->
+                    <Button Content="🗖" Width="40" Height="30" Background="Transparent" Foreground="White"
+                            Click="Maximize_Click"/>
+                    <!-- Fechar -->
+                    <Button Content="✖" Width="40" Height="30" Background="Transparent" Foreground="White"
+                            Click="Close_Click"/>
+                </StackPanel>
+            </DockPanel>
 
+            <!-- Menu lateral -->
             <StackPanel Grid.Row="1">
-
-                <RadioButton Content="Home"
-                               Height="50"
-                               Foreground="White"
-                               FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"
-                               IsChecked="True"
-                               Command="{Binding HomeViewCommand}"/>
-                
-                <RadioButton Content="Produtos"
-                               Height="50"
-                               Foreground="White"
-                               FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"
-                               Command="{Binding ProdutoViewCommand}"/>
-
-                <RadioButton Content="Vendas"
-                               Height="50"
-                               Foreground="White"
-                               FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"
-                               Command="{Binding VendaViewCommand}"/>
-
-                <RadioButton Content="Financeiro"
-                               Height="50"
-                               Foreground="White"
-                               FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding FinanceiroViewCommand}"/>
-
-                <RadioButton Content="Materiais"
-                               Height="50"
-                               Foreground="White"
-                               FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding MaterialViewCommand}"/>
-
-                <RadioButton Content="Relatórios"
-                               Height="50"
-                               Foreground="White"
-                               FontSize="14"
-                               Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding DashboardViewCommand}"/>
+                <RadioButton Content="Home" Height="50" Foreground="White" FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}" IsChecked="True"
+                             Command="{Binding HomeViewCommand}"/>
+                <RadioButton Content="Produtos" Height="50" Foreground="White" FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}" Command="{Binding ProdutoViewCommand}"/>
+                <RadioButton Content="Vendas" Height="50" Foreground="White" FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}" Command="{Binding VendaViewCommand}"/>
+                <RadioButton Content="Financeiro" Height="50" Foreground="White" FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}" Command="{Binding FinanceiroViewCommand}"/>
+                <RadioButton Content="Materiais" Height="50" Foreground="White" FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}" Command="{Binding MaterialViewCommand}"/>
+                <RadioButton Content="Relatórios" Height="50" Foreground="White" FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}" Command="{Binding DashboardViewCommand}"/>
             </StackPanel>
 
-            <TextBox Width="250"
-                     Height="40"
-                     VerticalContentAlignment="Center"
-                     HorizontalAlignment="Left"
-                     Margin="5"
-                     Grid.Column="1"
-                     Style="{StaticResource ModernTextbox}"/>
-
-            <ContentControl Grid.Row="1"
-                            Grid.Column="1"
-                            Margin="10"
-                            Content="{Binding CurrentView}"/>
-
-
-
+            <!-- Área de conteúdo principal -->
+            <ContentControl Grid.Row="1" Grid.Column="1" Margin="10" Content="{Binding CurrentView}"/>
         </Grid>
-
     </Border>
 </Window>
